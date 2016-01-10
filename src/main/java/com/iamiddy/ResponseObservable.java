@@ -80,6 +80,11 @@ public class ResponseObservable {
              */
             if (!changed) return;
             localRo = obs.get(r.getEventId());
+
+            if (localRo == null) {
+                clearChanged(); return;
+            }
+
             obs.remove(localRo.getEventId());
             clearChanged();
         }
