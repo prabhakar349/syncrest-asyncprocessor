@@ -58,7 +58,7 @@ public class SyncAsyncProcessor {
         ResponseObserver callableObserver = new ResponseObserverImpl<>(request.getEventId());
         observable.addObservers(callableObserver);
         Future<T> response = executorService.submit(callableObserver);
-        this.producer.produceMessage(request); //S
+        this.producer.produceMessage(request);
         return response.get(timeout, TimeUnit.MILLISECONDS);
     }
 

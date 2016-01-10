@@ -36,6 +36,28 @@ also leveraged the `Callable<V>` and `Future` 's capabilities to asynchronously 
 
 
 ## USAGE
+Create an instance of `SyncAsyncProcessor` which requires `MessageProducer` and `MessageConsumer` implementations
+```java
+/**
+* SyncAsyncProcessor#getInstance method signature
+*/
+public static SyncAsyncProcessor getInstance(MessageProducer producer, MessageConsumer messageConsumer);
+/**
+* MessageConsumer
+*/
+public interface MessageProducer {
+    <R extends AbstractResponse> void produceMessage(R request);
+}
+/**
+* MessageConsumer
+*/
+public abstract class MessageConsumer extends ResponseObservable {
+    public <R extends AbstractResponse> void onMessage(R response) {
+        setChanged();
+        notifyObservers(response);
+    }
+}
+```
 - Observer
 - Singleton
 - Callable & Future
