@@ -36,6 +36,10 @@ also leveraged the `Callable<V>` and `Future` 's capabilities to asynchronously 
 
 
 ## USAGE
+**SyncAsyncProcessor** exposes a `sendAndReceive` for sending in a request and waiting for a response, both request-in and response-out classes must extend `AbstractResponse` for **correlation** purposes, nothing will work without it
+```java
+public <R extends AbstractResponse, T extends AbstractResponse> T sendAndReceive(R request, long timeout) 
+``` 
 Create an instance of `SyncAsyncProcessor` which requires `MessageProducer` and `MessageConsumer` implementations <br/>
 
 1. MessageProducer interface , implement `produceMessage`  with specific details to write to your message bus
@@ -65,3 +69,50 @@ public abstract class MessageConsumer extends ResponseObservable {
 - Observer
 - Singleton
 - Callable & Future
+
+### DEMO
+For demonstration and testing purposes, I've included [SampleService](https://github.com/iamiddy/rest-async-processing/blob/master/src/main/java/com/iamiddy/service/SampleService.java) MessageProducer , which takes in a `BlockingQueue` and a `MessageConsumer`
+
+ - `produceMessage` implementation takes in a request, processes it (by reversing the request body), construct a response and puts it into the BlockingQueue for Consumption <br/>
+ - [SampleService](https://github.com/iamiddy/rest-async-processing/blob/master/src/main/java/com/iamiddy/service/SampleService.java)  also implements Runnable's `run` method, for consuming messages from the `BlockingQueue` which internally calls the MessageConsumer's `onMessage` method.
+ 
+SampleTest that you can run
+```java
+public class SampleServiceTest {
+
+    private SyncAsyncProcessor processor;
+    private MessageConsumer consumer;
+    private SampleService service;
+    ExecutorService ex = Executors.newFixedThreadPool(2);
+
+
+    @Before
+    public void setUp(){
+        this.consumer = new MessageConsumerImpl();
+        this.service = new SampleService(new LinkedBlockingQueue<>(),this.consumer);
+        this.processor = SyncAsyncProcessor.getInstance(service,consumer);
+        ex.execute(service); //run() will call onMessage() for any new message on a queue
+    }
+
+    @Test
+    public void testResponse()  {
+        IntStream.range(0,20).forEach(d ->{
+            RequestEvent re = new RequestEvent("TT" + d, "message trying out " + d);
+
+            try {
+                ResponseEvent resp = processor.sendAndReceive(re, 3000); 
+                System.out.println(resp);
+                assertEquals(re.getEventId(),resp.getEventId());
+                assertEquals(new StringBuilder(re.getRequestBody()).reverse().toString(),resp.getResponseBody());
+            } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+
+    }
+
+
+}
+```

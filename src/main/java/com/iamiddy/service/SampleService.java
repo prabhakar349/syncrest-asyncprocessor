@@ -7,6 +7,7 @@ import com.iamiddy.domain.ResponseEvent;
 import java.util.concurrent.BlockingQueue;
 
 /**
+ * @author iddymagohe
  * Created by iddymagohe on 1/9/16.
  */
 public class SampleService  implements  MessageProducer, Runnable{
@@ -28,9 +29,7 @@ public class SampleService  implements  MessageProducer, Runnable{
     public <R extends AbstractResponse> void produceMessage(R request) {
 
         RequestEvent ev = (RequestEvent)request;
-        StringBuilder str = new StringBuilder(ev.getRequestBody());
-        str.reverse();
-        ResponseEvent re = new ResponseEvent(ev.getEventId(), str.toString());
+        ResponseEvent re = new ResponseEvent(ev.getEventId(), new StringBuilder(ev.getRequestBody()).reverse().toString());
         try {
             responseQueue.put(re);
         } catch (InterruptedException e) {
