@@ -36,7 +36,11 @@ also leveraged the `Callable<V>` and `Future` 's capabilities to asynchronously 
 
 
 ## USAGE
-Create an instance of `SyncAsyncProcessor` which requires `MessageProducer` and `MessageConsumer` implementations
+Create an instance of `SyncAsyncProcessor` which requires `MessageProducer` and `MessageConsumer` implementations <br/>
+
+1. MessageProducer interface , implement `produceMessage`  with specific details to write to your message bus
+2.  MessageConsumer abstract class, extends  it with specific consumer details, if you choose to override then `onMessage` , you must call `super.onMessage` at the end with a desired `Response` 
+
 ```java
 /**
 * SyncAsyncProcessor#getInstance method signature
