@@ -1,6 +1,6 @@
 # Rest-Async-Processing
 
-Synchronous request block for a response or times,request is handed to the async processor, that encapsulate applications layer  services from
+Synchronous request block for a response or timeout, a request is handed to the async processor, that encapsulate applications layer  services from
 The underlying complex processing  logic on the events driven architecture which includes one or many microservices coordination decoupled by a message bus infrastructure.
 
 ##Use case
