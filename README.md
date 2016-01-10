@@ -11,9 +11,9 @@ This implies the rest-endpoints app is completely decoupled from the actual requ
 In this architecture the only clue to the rest-endpoints app is basically where to drop a request and from where a response will be delivered, details about how many hops being queues or topics this request will move between for processing, is not known by rest-endpoints app.
 
 ###Few things to note:
- 1. Rest-endpoints app can receive lot's of requests persecond before responding to the first request.
- 2. Depending on the incoming request rate, it is more likely that, at any point in time the rest-endpoints app will have received many request and few responses to some of requests from the message bus, all help in memory at the same time.
- 3. The response should only be returned to the correct request it originated from and not to any random requests in memory.(correlation mechanism)
+ 1. Rest-endpoints app can receive lot's of requests per second before responding to the first request.
+ 2. Depending on the incoming request rate, it is more likely that, at any point in time the rest-endpoints app will have received many requests and few responses to some of requests from the message bus, all held in memory at the same time.
+ 3. The response should only be returned to the correct request it originated from and not to any other random requests in memory.(correlation mechanism should be in place)
  4. For load balancing (LB) and high availability(HA) requirements there could be up **N** number of rest-endpoints app instances up and running at the same time.
  5. Because of the LB and HA , a response should never be returned to any instance that it's associated request didn't come from.
  6. Regardless of the message bus architecture or technology stack the rest-endpoints app service layer experience/interaction should remain the same 
