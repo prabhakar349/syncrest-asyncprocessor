@@ -1,6 +1,6 @@
-package com.iamiddy.service;
+package com.github.iamiddy.syncrest.asynchprocessor.service;
 
-import com.iamiddy.AbstractResponse;
+import com.github.iamiddy.syncrest.asynchprocessor.AbstractResponse;
 
 /**
  * Created by iddymagohe on 1/9/16.

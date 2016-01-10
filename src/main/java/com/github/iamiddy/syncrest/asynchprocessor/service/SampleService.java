@@ -1,8 +1,8 @@
-package com.iamiddy.service;
+package com.github.iamiddy.syncrest.asynchprocessor.service;
 
-import com.iamiddy.AbstractResponse;
-import com.iamiddy.domain.RequestEvent;
-import com.iamiddy.domain.ResponseEvent;
+import com.github.iamiddy.syncrest.asynchprocessor.domain.RequestEvent;
+import com.github.iamiddy.syncrest.asynchprocessor.domain.ResponseEvent;
+import com.github.iamiddy.syncrest.asynchprocessor.AbstractResponse;
 
 import java.util.concurrent.BlockingQueue;
 

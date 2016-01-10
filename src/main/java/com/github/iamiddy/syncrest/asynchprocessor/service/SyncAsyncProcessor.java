@@ -1,9 +1,9 @@
-package com.iamiddy.service;
+package com.github.iamiddy.syncrest.asynchprocessor.service;
 
-import com.iamiddy.AbstractResponse;
-import com.iamiddy.ResponseObservable;
-import com.iamiddy.ResponseObserver;
-import com.iamiddy.ResponseObserverImpl;
+import com.github.iamiddy.syncrest.asynchprocessor.AbstractResponse;
+import com.github.iamiddy.syncrest.asynchprocessor.ResponseObservable;
+import com.github.iamiddy.syncrest.asynchprocessor.ResponseObserver;
+import com.github.iamiddy.syncrest.asynchprocessor.ResponseObserverImpl;
 
 import java.util.concurrent.*;
 

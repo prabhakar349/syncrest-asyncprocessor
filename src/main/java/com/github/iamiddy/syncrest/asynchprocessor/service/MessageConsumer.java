@@ -1,7 +1,7 @@
-package com.iamiddy.service;
+package com.github.iamiddy.syncrest.asynchprocessor.service;
 
-import com.iamiddy.AbstractResponse;
-import com.iamiddy.ResponseObservable;
+import com.github.iamiddy.syncrest.asynchprocessor.AbstractResponse;
+import com.github.iamiddy.syncrest.asynchprocessor.ResponseObservable;
 
 /**
  * @author iddymagohe

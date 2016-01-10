@@ -4,11 +4,11 @@
 
   <groupId>com.iamiddy</groupId>
   <artifactId>syncrest-asyncprocessor</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>syncrest-asyncprocessor</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/iamiddy/syncrest-asyncprocessor</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,11 +26,11 @@
             <email>iddyiam@gmail.com</email>
         </developer>
     </developers>
-    <!--<scm>-->
-        <!--<connection>scm:git:git@github.com:example/example-application.git</connection>-->
-        <!--<developerConnection>scm:git:git@github.com:example/example-application.git</developerConnection>-->
-        <!--<url>git@github.com:example/example-application.git</url>-->
-    <!--</scm>-->
+    <scm>
+        <connection>scm:git:git@github.com:iamiddy/syncrest-asyncprocessor.git</connection>
+        <developerConnection>scm:git:git@github.com:iamiddy/syncrest-asyncprocessor.git</developerConnection>
+        <url>git@github.com:iamiddy/syncrest-asyncprocessor.git</url>
+    </scm>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

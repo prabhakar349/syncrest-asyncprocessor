@@ -1,4 +1,20 @@
-package com.iamiddy;
+/*
+ * Copyright [2016] [Iddy Magohe]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.iamiddy.syncrest.asynchprocessor;
 
 
 
@@ -56,9 +72,9 @@ public class ResponseObservable {
      * arguments: this observable object and the <code>r</code> argument.
      *
      * @param r any child object of AbstractResponse.
-     * @see com.iamiddy.ResponseObservable#clearChanged()
-     * @see com.iamiddy.ResponseObservable#hasChanged()
-     * @see com.iamiddy.ResponseObserver#applyResponse(com.iamiddy.ResponseObservable, com.iamiddy.AbstractResponse)
+     * @see ResponseObservable#clearChanged()
+     * @see ResponseObservable#hasChanged()
+     * @see ResponseObserver#applyResponse(ResponseObservable, AbstractResponse)
      */
     public <T extends AbstractResponse> void notifyObservers(T r) {
 
