@@ -1,6 +1,6 @@
 package com.iamiddy;
 
-import sun.plugin.dom.exception.InvalidStateException;
+
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -24,13 +24,13 @@ public class ResponseObservable {
      *
      * @param ro responseObserver to be added
      * @throws NullPointerException
-     * @throws InvalidStateException
+     * @throws IllegalStateException unique requests
      */
     public synchronized void addObservers(ResponseObserver ro) {
         if (ro == null || ro.getEventId() == null)
             throw new NullPointerException();
         if (obs.containsKey(ro.getEventId()))
-            throw new InvalidStateException("Only one observer is allowed per request : " + ro.getEventId());
+            throw new IllegalStateException("Only one observer is allowed per request : " + ro.getEventId());
         obs.putIfAbsent(ro.getEventId(), ro);
     }
 
