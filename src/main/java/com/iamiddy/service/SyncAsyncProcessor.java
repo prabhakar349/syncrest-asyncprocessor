@@ -8,23 +8,24 @@ import com.iamiddy.ResponseObserverImpl;
 import java.util.concurrent.*;
 
 /**
+ * @author iddymagohe
  * Created by iddymagohe on 1/9/16.
  */
 public class SyncAsyncProcessor {
     private static SyncAsyncProcessor syncAsyncProcessorInstance = null;
 
     private ExecutorService executorService;
-    private MessageConsumerImpl observable;
+    private MessageConsumer observable;
     private MessageProducer producer;
 
 
-    private SyncAsyncProcessor(MessageProducer producer, MessageConsumerImpl messageConsumer) {
+    private SyncAsyncProcessor(MessageProducer producer, MessageConsumer messageConsumer) {
         this.producer = producer;
         this.observable = messageConsumer;
         this.executorService = Executors.newCachedThreadPool();
     }
 
-    public static SyncAsyncProcessor getInstance(MessageProducer producer, MessageConsumerImpl messageConsumer) {
+    public static SyncAsyncProcessor getInstance(MessageProducer producer, MessageConsumer messageConsumer) {
         synchronized (SyncAsyncProcessor.class) {
             if (syncAsyncProcessorInstance == null)
                 syncAsyncProcessorInstance = new SyncAsyncProcessor(producer, messageConsumer);
@@ -38,7 +39,7 @@ public class SyncAsyncProcessor {
      * submits a task asynchronously to executorService for a response whenever it's available or timesout
      * Produces a message to a message bus for backend processing
      *
-     * @param request
+     * @param request request
      * @param <R>     extends AbstractResponse
      * @param <T>     extends AbstractResponse
      * @param timeout in Milliseconds

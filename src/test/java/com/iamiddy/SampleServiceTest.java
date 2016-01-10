@@ -15,14 +15,15 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.*;
 
 /**
+ * @author iddymagohe
  * Created by iddymagohe on 1/9/16.
  */
 public class SampleServiceTest {
 
     private SyncAsyncProcessor processor;
-    private MessageConsumerImpl consumer;
+    private MessageConsumer consumer;
     private SampleService service;
-    ExecutorService ex = Executors.newSingleThreadExecutor();
+    ExecutorService ex = Executors.newFixedThreadPool(2);
 
 
     @Before
