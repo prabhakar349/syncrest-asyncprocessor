@@ -34,8 +34,9 @@ public interface ResponseObserver<T extends AbstractResponse> extends Callable<T
      * @see ResponseObservable#deleteObserver(ResponseObserver)
      * @see ResponseObservable#notifyObservers(AbstractResponse)
      *
-     * @param responseObservable
-     * @param response
+     * @param responseObservable observable
+     * @param response to notify an observer with
+     *
      */
     void applyResponse(ResponseObservable responseObservable, T response);
 }

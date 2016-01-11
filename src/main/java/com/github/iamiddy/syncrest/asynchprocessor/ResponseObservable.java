@@ -39,7 +39,7 @@ public class ResponseObservable {
      * that it is not the same as some observer already in the set.
      *
      * @param ro responseObserver to be added
-     * @throws NullPointerException
+     * @throws NullPointerException non-null observers
      * @throws IllegalStateException unique requests
      */
     public synchronized void addObservers(ResponseObserver ro) {
@@ -72,6 +72,7 @@ public class ResponseObservable {
      * arguments: this observable object and the <code>r</code> argument.
      *
      * @param r any child object of AbstractResponse.
+     * @param <T>  type
      * @see ResponseObservable#clearChanged()
      * @see ResponseObservable#hasChanged()
      * @see ResponseObserver#applyResponse(ResponseObservable, AbstractResponse)

@@ -39,15 +39,15 @@ public class SyncAsyncProcessor {
      * submits a task asynchronously to executorService for a response whenever it's available or timesout
      * Produces a message to a message bus for backend processing
      *
-     * @param request request
      * @param <R>     extends AbstractResponse
      * @param <T>     extends AbstractResponse
      * @param timeout in Milliseconds
+     * @param request for processing
      * @return T extends AbstractResponse
-     * @throws NullPointerException
-     * @throws InterruptedException,ExecutionException
-     * @throws java.util.concurrent.TimeoutException
-     *
+     * @throws NullPointerException null request or eventId
+     * @throws InterruptedException interruption caused
+     * @throws ExecutionException execution issue
+     * @throws java.util.concurrent.TimeoutException took longer than the passed milliseconds
      * @see ResponseObservable#addObservers(ResponseObserver)
      * @see ExecutorService#submit(Callable)
      * @see MessageProducer#produceMessage(AbstractResponse)

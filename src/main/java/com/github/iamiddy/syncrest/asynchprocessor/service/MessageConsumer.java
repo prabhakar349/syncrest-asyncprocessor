@@ -5,6 +5,7 @@ import com.github.iamiddy.syncrest.asynchprocessor.ResponseObservable;
 
 /**
  * @author iddymagohe
+ * @since 0.0.1
  * Created by iddymagohe on 1/9/16.
  *
  */
@@ -16,7 +17,7 @@ public abstract class MessageConsumer extends ResponseObservable {
      * <code>setChanged</code> and <code>notifyObservers</code> otherwise requests will never get a response
      *
      * @param response extends AbstractResponse
-     * @param <R> response
+     * @param <R> type be returned
      * @see ResponseObservable#setChanged()
      * @see ResponseObservable#notifyObservers(AbstractResponse)
      */

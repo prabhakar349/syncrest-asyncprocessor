@@ -22,8 +22,8 @@ public class SampleService  implements  MessageProducer, Runnable{
 
     /**
      * Takes in a RequestEvent, reverse it's body and put the response in a blocking queue.
-     * @param request
-     * @param <R>
+     * @param request message to produce
+     * @param <R> type
      */
     @Override
     public <R extends AbstractResponse> void produceMessage(R request) {
