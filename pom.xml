@@ -3,7 +3,7 @@
 
     <groupId>com.github.iamiddy</groupId>
     <artifactId>syncrest-asyncprocessor</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>syncrest-asyncprocessor</name>
