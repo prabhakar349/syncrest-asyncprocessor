@@ -1,7 +1,7 @@
 # Rest-Async-Processing
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.iamiddy/syncrest-asyncprocessor/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.iamiddy/syncrest-asyncprocessor)
 [![Build Status](https://travis-ci.org/iamiddy/syncrest-asyncprocessor.svg?branch=master)](https://travis-ci.org/iamiddy/syncrest-asyncprocessor)
-[![Coverage Status](https://img.shields.io/coveralls/iamiddy/syncrest-asyncprocessor.svg)](https://coveralls.io/r/iamiddy/syncrest-asyncprocessor)
+[![Coverage Status](https://coveralls.io/repos/iamiddy/syncrest-asyncprocessor/badge.svg?branch=master&service=github)](https://coveralls.io/github/iamiddy/syncrest-asyncprocessor?branch=master)
 
 A simple interface that handles synchronous requests that block for a response or times-out, a request is then handed to the async processor, that encapsulate application layer services from
 the underlying complex event-driven processing architecture which might includes a number microservices in process , and  the coordination between the components (apps) is decoupled by a message bus infrastructure.
