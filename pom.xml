@@ -62,6 +62,8 @@
                 <configuration>
                     <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
                     <goals>deploy</goals>
                     <goals>deploy nexus-staging:release</goals>
                 </configuration>
@@ -140,5 +142,11 @@
                 </executions>
             </plugin>
         </plugins>
+
     </build>
+    <profiles>
+        <profile>
+            <id>release</id>
+        </profile>
+    </profiles>
 </project>
