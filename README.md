@@ -1,4 +1,4 @@
-# Rest-Async-Processing
+# Syncrest-Asyncprocessor
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.iamiddy/syncrest-asyncprocessor/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.iamiddy/syncrest-asyncprocessor)
 [![Build Status](https://travis-ci.org/iamiddy/syncrest-asyncprocessor.svg?branch=master)](https://travis-ci.org/iamiddy/syncrest-asyncprocessor)
 [![Coverage Status](https://coveralls.io/repos/iamiddy/syncrest-asyncprocessor/badge.svg?branch=master&service=github)](https://coveralls.io/github/iamiddy/syncrest-asyncprocessor?branch=master)
@@ -22,7 +22,7 @@ In this architecture the only clue to the rest-endpoints app is basically where 
  5. Because of the LB and HA , a response should never be returned to any instance that it's associated request didn't come from.
  6. Regardless of the message bus architecture or technology stack the rest-endpoints app service layer experience/interaction should remain the same 
 
-The **Rest-Async-Processing** has taken note 1 through 6 into consideration, and exposes a very simple interface to the rest-endpoints app or any other app with a similar interaction architecture 
+The **syncrest-asyncprocessor** has taken note 1 through 6 into consideration, and exposes a very simple interface to the rest-endpoints app or any other app with a similar interaction architecture 
  while encapsulating these apps from all the handling details pointed out in (1 - 6), and it can be used in any Java application employing the async requests fulfillment architecture.
 ```java
   /**
@@ -32,7 +32,7 @@ The **Rest-Async-Processing** has taken note 1 through 6 into consideration, and
    public <R extends AbstractResponse, T extends AbstractResponse> T sendAndReceive(R request, long timeout)
 ```
 ### How it works ?
-At it's core **Rest-Async-Processing** implements a famous [Observer design pattern](https://en.wikipedia.org/wiki/Observer_pattern) in such a way that,
+At it's core **syncrest-asyncprocessor** implements a famous [Observer design pattern](https://en.wikipedia.org/wiki/Observer_pattern) in such a way that,
 a new `ResponseObserver` (Observer) is created for every incoming request, and whenever a response , is available the `ResponseObservable` (Subject) notifies it's associated `ResponseObserver`, and 
 also leveraged the `Callable<V>` and `Future` 's capabilities to asynchronously wait for a response in a form of `Future` browse through the code for more details.
 
@@ -40,7 +40,15 @@ also leveraged the `Callable<V>` and `Future` 's capabilities to asynchronously 
 
 
 ## USAGE
-**SyncAsyncProcessor** exposes a `sendAndReceive` for sending in a request and waiting for a response, both request-in and response-out classes must extend `AbstractResponse` for **correlation** purposes, nothing will work without it
+Add `Syncrest-Asyncprocessor`  as library dependencies to your project (maven example).
+```xml
+<dependency>
+    <groupId>com.github.iamiddy</groupId>
+    <artifactId>syncrest-asyncprocessor</artifactId>
+    <version>0.0.2</version>
+</dependency>
+```
+**SyncAsyncProcessor** has a `sendAndReceive` method for sending in a request and waiting for a response, both request-in and response-out classes must extend `AbstractResponse` for **correlation** purposes, nothing will work without it
 ```java
 public <R extends AbstractResponse, T extends AbstractResponse> T sendAndReceive(R request, long timeout) 
 ``` 
@@ -120,3 +128,7 @@ public class SampleServiceTest {
 
 }
 ```
+
+## License
+
+This project is licensed under the [Apache License Version 2.0](LICENSE).
